@@ -1,18 +1,16 @@
 import discord
 import os
 from dotenv import load_dotenv
-# from Discord.Coin.keep_alive import keep_alive
-# import Discord.Coin.rpc as rpc
-# from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
+from Discord.Coin.keep_alive import keep_alive
+import Discord.Coin.rpc as rpc
+from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 
 load_dotenv()
 
 
-# RPCUSER = os.getenv('RPCUSER')
-# RPCPASSWORD = os.getenv('RPCPASSWORD')
-# RPCPORT = os.getenv('RPCPORT')
-
-# rpc_connection = AuthServiceProxy(f"http://{RPCUSER}:{RPCPASSWORD}@127.0.0.1:{RPCPORT}")
+RPCUSER = os.getenv('RPCUSER')
+RPCPASSWORD = os.getenv('RPCPASSWORD')
+RPCPORT = os.getenv('RPCPORT')
 
 client = discord.Client(intents=discord.Intents.default())
 
@@ -27,7 +25,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     msg = message.content
-
+    rpc_connection = AuthServiceProxy(f"http://{RPCUSER}:{RPCPASSWORD}@127.0.0.1:{RPCPORT}")
     if msg.startswith('$qoute'):
         await message.channel.send("Hiii!!!!!!!")
 
