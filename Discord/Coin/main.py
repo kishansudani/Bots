@@ -12,7 +12,12 @@ RPCUSER = os.getenv('RPCUSER')
 RPCPASSWORD = os.getenv('RPCPASSWORD')
 RPCPORT = os.getenv('RPCPORT')
 
-client = discord.Client(intents=discord.Intents.default())
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(intents=intents)
+# client = discord.Client(intents=discord.Intents.default())
 
 @client.event
 async def on_ready():
