@@ -1,8 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-from Discord.Coin.keep_alive import keep_alive
-import Discord.Coin.rpc as rpc
+import rpc
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 
 load_dotenv()
